@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'kelvinleungv'
+            keyPassword '092114'
+            storeFile file('C:/Users/abc/.android/kelvinleungv.jks')
+            storePassword '092114'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+        applicationId "cn.edu.gdmec.s07150724.mymap"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/BaiduLBS_AndroidSDK_Lib (1)/libs/BaiduLBS_Android.jar')
+}
